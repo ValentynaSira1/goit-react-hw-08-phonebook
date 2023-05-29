@@ -1,0 +1,25 @@
+.nav_box {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding: 16px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.2637429971988795) 0%, rgba(0,0,0,0.24413515406162467) 50%);
+}
+  
+.nav_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    list-style: none;
+    font-size: 40px;
+}
+.nav_link {
+    display: block;
+    padding: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+  

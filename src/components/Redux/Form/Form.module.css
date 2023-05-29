@@ -1,0 +1,28 @@
+.form {
+display: block;
+margin: 10px, 5px;
+width: 600px;
+}
+
+/* .formGroup {
+
+} */
+
+.label {
+font-size: 14px;
+line-height: 1.71;
+}
+
+.input {
+margin: 10px 5px;
+padding: 5px 3px;
+box-shadow: 10px 5px 5px gray;
+}
+
+.button {
+    right: 0;
+    width: 100px;
+    height: 50px;
+    padding: 8px 4px;
+    box-shadow: 10px 5px 5px gray;
+}
