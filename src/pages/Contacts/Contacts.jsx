@@ -26,7 +26,7 @@ export default function Contacts() {
       <div>
         <h2>Contacts</h2>
         <Filter />
-        {isLoading && !error && (
+        {isLoading ? !error : (
           <b>Request in progress...</b>
         )}
         <ContactsList />
