@@ -6,6 +6,7 @@ import { selectError, selectIsLoading } from '../../redux/Contacts/Selectors';
 import ContactForm from '../../components/ContactsForm/ContactsForm';
 import {Filter} from '../../components/Filter/Filter';
 import {ContactsList} from '../../components/ContactsList/ContactsList';
+import { Outlet } from 'react-router-dom';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function Contacts() {
     <div>
       <div>
         <h1>Phonebook</h1>
+        <Outlet/>
         <ContactForm />
       </div>
 
