@@ -4,9 +4,15 @@
     gap: 20px;
     margin-bottom: 16px;
     margin-top: 16px;
-    border: 1px solid #8a8a8a;
+    border: 3px solid #8a8a8a;
     outline: none;
     padding: 10px 5px;
+
+    background-image: linear-gradient(
+    to right,
+    #1fa2ff 0%,
+    #12d8fa 51%,
+    #1fa2ff 100%);
 }
   
 .input:focus {

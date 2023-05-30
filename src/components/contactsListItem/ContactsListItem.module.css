@@ -1,3 +1,24 @@
 .button {
-    margin-left: 20px;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: linear-gradient(
+    to right,
+    #1fa2ff 0%,
+    #12d8fa 51%,
+    #1fa2ff 100%
+  );
+  padding: 8px 24px;
+  margin: 5px 10px;
+  text-align: center;
+  text-transform: lowercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #fff;
+  border-radius: 50px;
+  min-width: 50px;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px #fff;
 }
