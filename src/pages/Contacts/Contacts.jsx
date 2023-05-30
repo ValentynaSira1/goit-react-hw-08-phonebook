@@ -7,8 +7,6 @@ import ContactForm from '../../components/ContactsForm/ContactsForm';
 import {Filter} from '../../components/Filter/Filter';
 import {ContactsList} from '../../components/ContactsList/ContactsList';
 
-// import css from './Contacts.module.css';
-
 export default function Contacts() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
