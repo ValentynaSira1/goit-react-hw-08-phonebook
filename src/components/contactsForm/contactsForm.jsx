@@ -5,7 +5,7 @@ import { addContact } from '../../redux/Contacts/Operations';
 import { selectContacts } from '../../redux/Contacts/Selectors';
 import Notiflix from 'notiflix';
 
-export default function ContactForm() {
+function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -86,3 +86,5 @@ function handleSubmit(e) {
     </form>
   );
 };
+
+export default ContactForm;
