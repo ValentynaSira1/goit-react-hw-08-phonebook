@@ -1,0 +1,50 @@
+.wrapper {
+    @media screen and (max-width: 767px) {
+      display: flex;
+    }
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .username {
+    @media screen and (max-width: 767px) {
+      /* margin-right: 0px; */
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  
+    margin-right: 10px;
+  }
+  
+  .button {
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-image: linear-gradient(
+      to right,
+      #1fa2ff 0%,
+      #12d8fa 51%,
+      #1fa2ff 100%
+    );
+    min-width: 50px;
+    padding: 5px 15px;
+  
+    text-align: center;
+    text-transform: lowercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #fff;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 50px;
+  
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px #fff;
+  }
+  
+  .button:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }

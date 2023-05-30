@@ -1,0 +1,55 @@
+.navLinkWrap {
+    @media (max-width: 767px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+  }
+  
+  .navLink {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-image: linear-gradient(
+      to right,
+      #1ffff4 0%,
+      #13a5bf 51%,
+      #0a97fc 100%
+    );
+  
+    margin-right: 0;
+    min-width: 50px;
+    padding: 5px 15px;
+  
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #fff;
+    box-shadow: 0 0 20px #cccbcb;
+    border-radius: 50px;
+  
+    box-shadow: 6px 6px 6px #898d92, -6px -6px 6px #fff;
+  
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+      padding: 10px 30px;
+      min-width: 80px;
+    }
+  }
+  
+  .navLink:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .navLink:first-of-type {
+    margin-bottom: 7px;
+    @media (min-width: 768px) {
+      margin-right: 10px;
+    }
+  }

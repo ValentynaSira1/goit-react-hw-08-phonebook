@@ -1,55 +1,55 @@
-import { ContactsList } from './contacts/contactsList/contactsList';
-import { ContactForm } from './contactsForm/contactsForm';
-import { Filter } from './filter/filter';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import css from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { refreshUser } from './Redux/Operation';
-import { RegistrationForm } from './Redux/Form/Registration';
-import { LogInForm } from './Redux/Form/LogIn';
-import { Layout } from './Layout';
+import { useEffect, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { isLoggedIn } from './Redux/selectors';
+import { Layout } from './Layout';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './PublicRoute';
+import { refreshUser } from '../redux/Auth/Operations';
+import { selectIsRefreshing } from '../redux/Auth/Selectors';
 
-export const App = () => {
-  const loggedIn = useSelector(isLoggedIn);
+// import css from './App.module.css';
 
+const HomePage = lazy(() => import('../pages/Home/Home'));
+const RegisterPage = lazy(() => import('../pages/Register/Register'));
+const LoginPage = lazy(() => import('../pages/Login/Login'));
+const ContactsPage = lazy(() => import('../pages/Contacts/Contacts'));
+
+export default function App() {
   const dispatch = useDispatch();
-  useEffect(()=>{
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  const logged = () => (
-    <>
-      <ContactForm />
-      <Filter />
-      <ContactsList />
-    </>
-  );
-
-  return (
-    <div className={css.container}>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
-      {loggedIn ? (
-            <>
-        <Route index element={logged()} />
-              <Route path="*" element={logged()} />
-            </>
-          ) : (
-            <>
-              <Route index element={<LogInForm />} />
-              <Route path="register" element={<RegistrationForm />} />
-              <Route path="login" element={<LogInForm />} />
-
-              <Route path="*" element={<RegistrationForm />} />
-            </>
-          )}
-        </Route>
-      </Routes>
-      <ToastContainer position="top-center" autoClose={2000} theme="dark" />
-    </div>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
-};
+}

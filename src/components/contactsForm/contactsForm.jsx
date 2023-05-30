@@ -1,48 +1,58 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import css from './ContactsForm.module.css';
+import { addContact } from '../../redux/Contacts/Operations';
+import { selectContacts } from '../../redux/Contacts/Selectors';
+import Notiflix from 'notiflix';
 
-import { postNewContact } from '../Redux/Operation';
-import { allContacts } from '../Redux/selectors';
-
-import css from './contactsForm.module.css';
-
-import { toast } from 'react-toastify';
-
-export const ContactForm = () => {
+export default function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
+
   const dispatch = useDispatch();
-  const contacts = useSelector(allContacts);
+  const contacts = useSelector(selectContacts);
 
-  const handleChange = e => {
-    const target = e.target.name;
-    if (target === 'name') {
-      setName(e.target.value);
-    } else {
-      setPhone(e.target.value);
-    }
+  const duplicationNameCheck = newName => {
+    return contacts.find(({ name }) => name === newName);
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const newContact = {
-      name,
-      number: phone,
-    };
-    if (
-      contacts.find(
-        contact =>
-          contact.name.toLowerCase() === name.toLowerCase() ||
-          contact.phone === phone
-      )
-    ) {
-      toast.error(`${name} or ${phone} is already in contacts`);
-    } else {
-      dispatch(postNewContact(newContact));
-      setName('');
-      setPhone('');
-    }
+  const duplicationNumberCheck = newNumber => {
+    return contacts.find(({ number }) => number === newNumber);
   };
+
+function handleChange(e) {
+  const { name, value } = e.target;
+
+  switch (name) {
+    case 'name':
+      setName(value);
+      break;
+
+    case 'number':
+      setNumber(value);
+      break;
+
+    default:
+      break;
+    }
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+
+  if (duplicationNameCheck(name) || duplicationNumberCheck(number)) {
+    Notiflix.Notify.failure(`This contact is already in List`);
+      return;
+  }
+
+  dispatch(addContact({ name, number }));
+    reset();
+  }
+
+  const reset = () => {
+    setName('');
+    setNumber('');
+};
 
   return (
     <form onSubmit={handleSubmit} className={css.form}>
@@ -69,7 +79,7 @@ export const ContactForm = () => {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           onChange={handleChange}
-          value={phone}
+          value={number}
         />
       </label>
       <button className={css.button} type="submit">Add contacts</button>
