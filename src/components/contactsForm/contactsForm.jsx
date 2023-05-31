@@ -5,7 +5,7 @@ import { addContact } from '../../redux/Contacts/Operations';
 import { selectContacts } from '../../redux/Contacts/Selectors';
 import Notiflix from 'notiflix';
 
-export const ContactForm = () => {
+export default function ContactForm () {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
