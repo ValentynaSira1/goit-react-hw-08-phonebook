@@ -82,7 +82,7 @@ function handleSubmit(e) {
           value={number}
         />
       </label>
-      <button className={css.button} type="submit">Add contacts</button>
+      <button className={css.button} type="submit">ADD CONTACTS</button>
     </form>
   );
 };
