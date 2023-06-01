@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/Contacts/Operations';
 import { selectError, selectIsLoading } from '../../redux/Contacts/Selectors';
 import ContactForm from '../../components/ContactForm/ContactForm';
-import Filters from '../../components/Filter/Filter';
+import Filters from '../../components/Filters/Filters';
 import ContactsList from '../../components/ContactsList/ContactsList';
 
 export default function Contacts() {
