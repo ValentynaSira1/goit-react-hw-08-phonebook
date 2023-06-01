@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updatedFilter } from '../../redux/Contacts/FilterSlice';
 import { selectFilterByQuery } from '../../redux/Contacts/Selectors';
 
-export default function Filter () {
+export default function Filters () {
   const dispatch = useDispatch();
 
   const onFilter = event => {
