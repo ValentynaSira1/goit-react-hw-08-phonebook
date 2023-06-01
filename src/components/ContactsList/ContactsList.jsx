@@ -12,7 +12,7 @@ const selectVisibleContacts = (contacts, query) => {
   );
 };
 
-export const ContactsList = () => {
+export default function ContactsList () {
   const contacts = useSelector(selectContacts);
   const query = useSelector(selectFilterByQuery);
   const visibleContacts = selectVisibleContacts(contacts, query);
