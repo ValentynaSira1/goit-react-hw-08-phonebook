@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/Contacts/Operations';
 import { selectError, selectIsLoading } from '../../redux/Contacts/Selectors';
 import ContactForm from '../../components/ContactForm/ContactForm';
-import Filter from '../../components/Filter/Filter';
+import Filters from '../../components/Filter/Filter';
 import ContactsList from '../../components/ContactsList/ContactsList';
 
 export default function Contacts() {
@@ -25,7 +25,7 @@ export default function Contacts() {
 
       <div>
         <h2>Contacts</h2>
-        <Filter />
+        <Filters />
         {isLoading ? !error : (
           <b>Request in progress...</b>
         )}
